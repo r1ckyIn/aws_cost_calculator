@@ -1,8 +1,26 @@
 # AWS Cost Calculator
 
-A Python-based AWS resource cost calculator that demonstrates Object-Oriented Programming principles including inheritance, polymorphism, abstract classes, and composition patterns.
+<div align="center">
 
-## Features
+[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
+[![AWS](https://img.shields.io/badge/AWS-Cloud-FF9900?style=flat-square&logo=amazon-aws&logoColor=white)](https://aws.amazon.com)
+[![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](LICENSE)
+
+**A Python-based AWS resource cost calculator demonstrating OOP principles**
+
+[English](#english) | [中文](#中文)
+
+</div>
+
+---
+
+## English
+
+### Overview
+
+AWS Cost Calculator is a command-line tool that calculates monthly costs for various AWS resources. This project demonstrates Object-Oriented Programming principles including inheritance, polymorphism, abstract classes, and composition patterns.
+
+### Features
 
 - **Multi-resource Support**: EC2, Lambda, S3, EBS, RDS
 - **Cost Calculation**: Automatic monthly cost calculation based on resource configuration
@@ -10,41 +28,18 @@ A Python-based AWS resource cost calculator that demonstrates Object-Oriented Pr
 - **Report Generation**: Generate comprehensive cost reports
 - **Factory Pattern**: Create resources using flexible factory functions
 
-## Project Structure
-
-```
-aws_cost_calculator/
-├── models/
-│   ├── __init__.py        # Package exports
-│   ├── base.py            # CloudResource abstract base class
-│   ├── compute.py         # EC2Instance, LambdaFunction
-│   ├── storage.py         # S3Bucket, EBSVolume
-│   └── database.py        # RDSDatabase
-├── manager.py             # AWSResourcesManager
-├── utils.py               # Factory functions
-├── main.py                # Demo entry point
-```
-
-## Installation
+### Quick Start
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/aws-cost-calculator.git
-cd aws-cost-calculator
+git clone https://github.com/r1ckyIn/aws_cost_calculator.git
+cd aws_cost_calculator
 
-# No external dependencies required - uses Python standard library only
-# Requires Python 3.10+
-```
-
-## Usage
-
-### Run the Demo
-
-```bash
+# Run the demo (no dependencies required)
 python main.py
 ```
 
-### Basic Usage
+### Usage
 
 ```python
 from manager import AWSResourcesManager
@@ -81,22 +76,31 @@ report = manager.generate_report()
 print(report)
 ```
 
-### Batch Resource Creation
+### Project Structure
 
-```python
-from utils import create_resources_from_list
-
-configs = [
-    {'type': 'ec2', 'resource_id': 'i-1', 'region': 'us-east-1', 'instance_type': 't2.micro'},
-    {'type': 's3', 'resource_id': 'bucket-1', 'region': 'us-east-1', 'storage_gb': 100},
-    {'type': 'rds', 'resource_id': 'db-1', 'region': 'us-east-1',
-     'instance_class': 'db.t3.micro', 'engine': 'mysql', 'storage_gb': 20},
-]
-
-resources = create_resources_from_list(configs)
+```
+aws_cost_calculator/
+├── models/
+│   ├── __init__.py        # Package exports
+│   ├── base.py            # CloudResource abstract base class
+│   ├── compute.py         # EC2Instance, LambdaFunction
+│   ├── storage.py         # S3Bucket, EBSVolume
+│   └── database.py        # RDSDatabase
+├── manager.py             # AWSResourcesManager
+├── utils.py               # Factory functions
+└── main.py                # Demo entry point
 ```
 
-## Supported Resources
+### Tech Stack
+
+- **Abstract Base Class**: `CloudResource` with `@abstractmethod` decorators
+- **Inheritance & Polymorphism**: 5 resource classes implementing common interface
+- **Encapsulation**: Private attributes with `@property` decorators
+- **Composition**: `AWSResourcesManager` manages multiple resources
+- **Factory Pattern**: Flexible resource creation with aliases
+- **Type Annotations**: Full type hints with `ClassVar`, `NoReturn`, etc.
+
+### Supported Resources
 
 | Resource | Pricing Model |
 |----------|---------------|
@@ -106,55 +110,54 @@ resources = create_resources_from_list(configs)
 | EBS | Per GB based on volume type |
 | RDS | Per hour + storage (Multi-AZ doubles instance cost) |
 
-## Resource Pricing
+---
 
-### EC2 Instance Types
-| Type | Price/Hour |
-|------|------------|
-| t2.micro | $0.0116 |
-| t2.small | $0.023 |
-| t2.medium | $0.0464 |
+## 中文
 
-### EBS Volume Types
-| Type | Price/GB/Month |
-|------|----------------|
-| gp2 | $0.10 |
-| gp3 | $0.08 |
-| io1/io2 | $0.125 |
-| st1 | $0.045 |
-| sc1 | $0.015 |
+### 项目概述
 
-### Other Services
-- **S3**: $0.023/GB/month
-- **RDS Storage**: $0.115/GB/month
-- **Lambda**: $0.20/million requests + $0.0000166667/GB-second
+AWS Cost Calculator 是一个基于命令行的 AWS 资源成本计算工具。该项目展示了面向对象编程原则，包括继承、多态、抽象类和组合模式。
 
-## Technical Highlights
+### 功能特性
 
-- **Abstract Base Class**: `CloudResource` with `@abstractmethod` decorators
-- **Inheritance & Polymorphism**: 5 resource classes implementing common interface
-- **Encapsulation**: Private attributes with `@property` decorators
-- **Composition**: `AWSResourcesManager` manages multiple resources
-- **Factory Pattern**: Flexible resource creation with aliases
-- **Type Annotations**: Full type hints with `ClassVar`, `NoReturn`, etc.
-- **PEP8 Compliant**: Google-style docstrings, proper naming conventions
+- **多资源支持**：EC2、Lambda、S3、EBS、RDS
+- **成本计算**：根据资源配置自动计算月度成本
+- **资源管理**：按区域或类型添加、删除、筛选资源
+- **报告生成**：生成综合成本报告
+- **工厂模式**：使用灵活的工厂函数创建资源
 
-## Supported Regions
+### 快速开始
 
-- us-east-1
-- us-west-2
-- eu-west-1
-- ap-southeast-1
-- ap-northeast-1
+```bash
+# 克隆仓库
+git clone https://github.com/r1ckyIn/aws_cost_calculator.git
+cd aws_cost_calculator
+
+# 运行演示（无需安装依赖）
+python main.py
+```
+
+### 技术亮点
+
+- **抽象基类**：使用 `@abstractmethod` 装饰器的 `CloudResource`
+- **继承与多态**：5 个资源类实现统一接口
+- **封装**：使用 `@property` 装饰器的私有属性
+- **组合**：`AWSResourcesManager` 管理多个资源
+- **工厂模式**：支持别名的灵活资源创建
+- **类型注解**：完整的类型提示，包括 `ClassVar`、`NoReturn` 等
+
+---
 
 ## License
 
-MIT License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
 
 ## Author
 
-Ricky
+**Ricky** - CS Student @ University of Sydney
 
-## Acknowledgments
+[![GitHub](https://img.shields.io/badge/GitHub-r1ckyIn-181717?style=flat-square&logo=github)](https://github.com/r1ckyIn)
 
-This project was created as part of a Python OOP learning curriculum.
+Interested in Cloud Engineering & DevOps
