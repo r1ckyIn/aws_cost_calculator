@@ -1,0 +1,8 @@
+# AWS Cost Calculator Dependencies
+# This project uses only Python standard library
+# No external dependencies required
+
+# Development dependencies (optional)
+# flake8>=6.0.0      # Code linting
+# mypy>=1.0.0        # Type checking
+# pytest>=7.0.0      # Testing
