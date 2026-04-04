@@ -1,6 +1,6 @@
-# AWS Cost Calculator
-
 <div align="center">
+
+# AWS Cost Calculator
 
 [![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
 [![AWS](https://img.shields.io/badge/AWS-Cloud-FF9900?style=flat-square&logo=amazon-aws&logoColor=white)](https://aws.amazon.com)
